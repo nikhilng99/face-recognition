@@ -78,7 +78,6 @@ class App extends Component {
     const image = document.getElementById('inputimage')
     const width = Number(image.width)
     const height = Number(image.height)
-    // console.log(clarifaiFace)
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
@@ -103,7 +102,7 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input })
-    fetch('http://localhost:3001/imageurl', {
+    fetch('http://localhost:3002/imageurl', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -114,7 +113,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         if (response) {
-          fetch('http://localhost:3001/image', {
+          fetch('http://localhost:3002/image', {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
